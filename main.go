@@ -1,7 +1,17 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+
+	"github.com/JoaoDeluchi/clean-architecture/src/entity"
+)
 
 func main() {
-	fmt.Println("Hello, world.")
+	u := entity.User{
+		Name: "someName",
+		Age: 20, 
+		LastName: "",
+	}
+
+	fmt.Println(u.IsValid())
 }

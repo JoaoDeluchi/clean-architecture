@@ -3,13 +3,10 @@ package database
 import (
 	"log"
 
+	"github.com/JoaoDeluchi/clean-architecture/src/entity"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
-
-type handler struct {
-	DB *gorm.DB
-}
 
 func Init() *gorm.DB {
 	dbURL := "postgres://pg:pass@localhost:5432/crud"
@@ -20,11 +17,7 @@ func Init() *gorm.DB {
 		log.Fatalln(err)
 	}
 
-	db.AutoMigrate(&User{})
+	db.AutoMigrate(&entity.User{})
 
 	return db
-}
-
-func New(db *gorm.DB) handler {
-	return handler{db}
 }
